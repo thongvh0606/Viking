@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Thông Tin Tài Khoảng</title>
+	<link rel="shortcut icon" href="images/Admin-User.ico" />
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
+
+	<!-- https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css -->
+	<!-- DATATABLES  -->
+	<!-- https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js -->
+
+	<script language="javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js"></script>
+	<script language="javascript" src="js/staff_custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.yadcf.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="loader"></div>
+	<!-- HEADER -->
+	<div id="header">
+      <!-- bs3-navbar:responsive -->
+    	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	        <div class="container-fluid">
+	          <!-- Brand and toggle get grouped for better mobile display -->
+	          
+	            
+	            <div class="navbar-header ">
+	              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	              </button>
+	              <a class="navbar-brand" href="#">
+	              <img src="images/logo.png" width="130px">
+	              </a>
+	            </div>
+	      
+	          <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse navbar-ex1-collapse">
+	              <ul class="nav navbar-nav">
+	                <li><a href="home.html"><i class="glyphicon glyphicon-user"></i>Quản Lý Khách Hàng</a></li>
+	                <li><a href="staff.html"><i class="glyphicon glyphicon-user"></i> Quản Lý Nhân Viên</a></li>
+	                
+	                <!-- <li><a href="#" data-toggle="modal" data-target="#modal-add-staff"><i class="glyphicon glyphicon-plus"></i>Thêm Nhân Viên</a></li> -->
+	                <li><a href="" class="cd-top" ><i class="glyphicon glyphicon-eject"></i></a></li>
+	              </ul>            
+	              <ul class="nav navbar-nav navbar-right">                
+	                <li class="dropdown">
+	                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
+	                  	<ul class="dropdown-menu">
+	                  		<li><a href="#"><i class="glyphicon glyphicon-user"></i>Thông Tin Tài Khoản</a></li>
+	                    
+	                    	<hr>
+	                    	<li><a href=""><i class="glyphicon glyphicon-log-out"></i>Đăng Xuất</a></li>
+	                  	</ul>
+	                </li>
+	              </ul>
+	            </div><!-- /.navbar-collapse -->	          
+	        </div>
+      	</nav>      	
+    </div>
+	<!-- END HEADER -->
+	<!-- CONTENT -->
+    <div class="content">
+    	<div id="EmployeeInfo" class="panel panel-default container-fluid">
+	  		<div class="panel-body">
+	  			<strong>Thông Tin Nhân Viên</strong>
+	    		<hr>
+	    		<form>
+				    <div class="form-group">
+				      	<label class="sr-only">Account ID:</label>
+				      	<input type="text" class="form-control" placeholder="Account ID" required="" value="NV0001">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Password:</label>
+				      	<input type="password" class="form-control" placeholder="Password" required="" value="Ahuhuhihi">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Tên Nhân Viên:</label>
+				      	<input type="text" class="form-control"  placeholder="Tên Nhân Viên" required="" value="Võ Duy Anh Hùng">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Số Điện Thoại:</label>
+				      	<input type="tel" class="form-control" pattern="^\d{10,11}$" placeholder="Số Điện Thoại" required="" value="01275436888">
+				    </div>
+
+				    <div class="form-group">
+				      	<label class="sr-only">Email:</label>
+				      	<input type="Email" class="form-control" placeholder="Email" required="" value="hungvda96@gmail.com">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">CMND:</label>
+				      	<input type="text" class="form-control" placeholder="CMND" value="012335232">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">FacebookUrl:</label>
+				      	<input type="text" class="form-control" placeholder="FacebookUrl" value="https://www.facebook.com/anhhung.idol">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Địa Chỉ:</label>
+				      	<input type="text" class="form-control" placeholder="Địa Chỉ" value="123/456 Lê Lợi, P.Bến Thành, Q1, TPHCM">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Role ID:</label>
+				      	<input type="text" class="form-control" placeholder="RoleID">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only">Giới Tính:</label>
+				    	<input type="radio" name="gender" value="male" > Male
+						<input type="radio" name="gender" value="female" checked="checked"> Female
+						<input type="radio" name="gender" value="other"> Other :3
+				    </div>
+				    <button type="submit" class="btn btn-primary">Sửa Thông Tin</button>
+	  		</div>
+		</div>
+    </div>
+    <!-- END CONTENT -->
+    <!-- FOOTER -->
+    <div id="footer" class="footer-section footer">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" target=""  > Designed by: HeroGroup</a> 
+            </div>
+		</div>
+	</div>
+	<!-- END FOOTER -->
+</body>
+</html>

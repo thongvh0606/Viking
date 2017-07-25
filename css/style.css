@@ -1,0 +1,341 @@
+
+
+/* LOGIN SHOW_HIDE */
+
+
+/* custom toggle style */
+
+.my-toggle {
+  background: transparent;
+  border: 0;
+  border-radius: 0.25em;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin-right: 0.5em;
+  padding: 0.5em;
+  text-transform: uppercase;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.my-toggle:hover,
+.my-toggle:focus {
+  background-color: #eee;
+  color: #555;
+  outline: transparent;
+}
+
+
+.hideShowPassword-toggle,
+.my-toggle {
+  z-index: 3;
+
+}
+
+
+
+/*------------------LOGIN/RETRIEVE-------------------*/
+#login-wrap,
+#retrieve-wrap{
+    background: #212121 url("../images/login_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    color: #666;
+}
+#login-wrap .login-box .box-header,
+#retrieve-wrap .retrieve-box .box-header{
+    background-color: #0D0D0D;
+}
+#login-wrap .login-box button,
+#retrieve-wrap .retrieve-box button{
+    background-color: #0D0D0D;
+}
+
+/* login lay out */
+
+.login-box,
+.retrieve-box{
+    background-color: white;
+    max-width: 340px;
+    margin: 0 auto;
+    position: relative;
+    top: 0px;
+    padding-bottom: 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.4);
+    text-align: ;
+}
+
+.login-box .box-header,
+.retrieve-box .box-header{
+    background-color: #665851;
+    margin-top: 0;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+
+.login-box label,
+.retrieve-box label {
+    font-weight: 700;
+    font-size: .8em;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 2em;
+}
+
+.login-box input,
+.retrieve-box input {
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: .9em;
+    color: #888;
+    
+}
+
+.login-box .box-content .login #username,
+.retrieve-box .box-content input{
+    width: 210px;
+}
+
+.login-box input:focus,
+.retrieve-box input:focus {
+    outline: none;
+    border-color: #665851;
+    transition: 0.5s;
+    color: #665851;
+}
+
+.login-box button,
+.retrieve-box button {
+    margin-top: 0px;
+    border: 0;
+    border-radius: 2px;
+    color: white;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    background-color: #665851;
+    cursor:pointer;
+    outline: none;
+}
+
+.login-box button:hover,
+.retrieve-box button:hover {
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.login-box button:hover,
+.retrieve-box button:hover {
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+#logo {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 2s;
+}
+
+.login-box,
+.retrieve-box {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+}
+
+h2 {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1.4em;
+    line-height: 2.8em;
+}
+h1#title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+    font-size: 3.2em;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
+    margin: 0 auto;
+    padding-top: 80px;
+    max-width: 300px;
+    text-align: center;
+    position: relative;
+    top: 0px;
+}
+
+/* =============HEADER============= */
+/* ---NAVBAR--- */
+.navbar-nav>li>a img{
+	width: 20px;
+	height: 20px;
+}
+.navbar{
+	padding-top: 10px;
+	margin-bottom: 10px;
+	
+}
+.navbar>.container-fluid .navbar-brand{
+	padding-top: 2px;
+	height: 60px;
+}
+hr{
+	margin: 5px 5px;
+}
+/* ---END NAVBAR--- */
+
+/* =============END HEADER============= */
+
+/* =============BODY============= */
+/* --FIRST LOADING-- */
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+/* --END FIRST LOADING-- */
+/* SEARCHING */
+#searching{
+	
+    padding: 100px 120px 20px;
+    margin:0px;
+}
+
+.form-control-clear {
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}
+#searchTable #filter_global td input{
+    width: 370px;
+}
+
+.yadcf-filter-wrapper-inner{
+display: inline-block;
+}
+#external_filter_container_bd input,
+#external_filter_container_kt input,
+#external_filter_container_tdc input{
+    width: 170px;
+    display: inline-block;
+}
+/* --SHOW HIDE SEARCH DETAIL-- */
+.cat1{
+	display: none;
+}
+/* --END SHOW HIDE SEARCH DETAIL-- */
+
+/* SEARCH DATE INPUT */
+
+#myTable th input{
+    width: 80px;
+}
+
+/* END SEARCH DATE INPUT */
+/* SHOW HIDE COL */
+#showHideCol{
+    padding-bottom: 10px;
+}
+/* END SHOW HIDE COL */
+
+/* ============TABLE============ */
+
+/* TRẠNG THÁI GIAO DỊCH */ 
+
+
+#processing span a{
+    color: white;
+}
+
+
+#myTable thead tr th{
+width: 10%;
+}
+#myTable td {
+    text-align: center;
+}
+.not-yet,
+.finish,
+.cus-agree,
+.cus-refuse,
+.cus-delay,
+.sys-refuse,
+.sys-confirm,
+.sys-delay,
+.f1,
+.f2{
+	
+	color: white;
+	text-align: center;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+
+
+.not-yet{
+    background: #aa0000;
+}
+.finish{
+    background: #1E90FF;
+}
+.cus-agree{
+    background: #1ba39c;
+}
+.cus-refuse{
+    background: #263238;
+}
+.cus-delay{
+    background: #95a5a6;
+}
+.sys-refuse{
+    background: #37474F;
+}
+.sys-confirm{
+    background: #00aa00;
+}
+.sys-delay{
+    background: #bdc3c7;
+}
+.f1{
+    background: #aa8f00;
+}
+.f2{
+    background: #C0CA33;
+}
+/* END TRẠNG THÁI GIAO DỊCH */ 
+/* =============END BODY============= */
+
+/* FOOTER */
+.footer-section {
+	margin-top: 50px;
+    padding: 25px 50px 25px 50px;
+    color: #000;
+    font-size: 13px;
+    background: #E6DADA;
+    background: -webkit-linear-gradient(to left, #E6DADA , #274046);
+    background: linear-gradient(to left, #E6DADA , #274046);
+    text-align: right;
+    border-top: 5px solid #000;
+}
+/* =-------=DETAIL PAGE=-------= */
+
+#EmployeeInfo,
+#register{
+
+    margin: 100px 20px 50px 50px;
+}

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home</title>
+	<link rel="shortcut icon" href="images/Admin-User.ico" />
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="http://yadcf-showcase.appspot.com/resources/css/bootstrap-datetimepicker.min.css">
+
+	<!-- https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css -->
+	<!-- DATATABLES  -->
+
+	<script language="javascript" src="http://yadcf-showcase.appspot.com/resources/js/moment.min.js"></script>
+	<script language="javascript" src="http://yadcf-showcase.appspot.com/resources/js/bootstrap-datetimepicker.min.js"></script>
+	<script language="javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<!-- https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js -->
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js"></script>
+	<script language="javascript" src="js/custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.yadcf.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+
+		
+
+	
+
+	<!-- <script>
+	$(document).ready(function(){
+
+		var n = $('#content #myTable tbody tr td input[type=checkbox]:checked').length;
+		$( '#content #multiAction #texx').text( n + (n === 1 ? " is" : " are") + " checked!" );
+		$( "#content #myTable tbody tr td input[type=checkbox]" ).on( "click", countChecked );
+		});
+			var countChecked = function() {
+				
+		  var n = $('#myTable tbody tr td:eq(2) input:checked').length;
+
+		  console.log(n);
+		  $( "#content #multiAction #texx").append( n + (n === 1 ? " is" : " are") + " checked!" );
+		  $( "div#content div#multiAction div#text").addClass('not-yet');
+		};
+		countChecked();
+		 
+		$( "#content #myTable tbody tr td input[type=checkbox]" ).on( "click", countChecked );
+	</script> -->
+
+</head>
+<body>
+	<div class="loader"></div>
+	<div id="header">
+      <!-- bs3-navbar:responsive -->
+    	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	        <div class="container-fluid">
+	          <!-- Brand and toggle get grouped for better mobile display -->
+	          
+	            
+	            <div class="navbar-header ">
+	              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	              </button>
+	              <a class="navbar-brand" href="#">
+	              <img src="images/logo.png" width="130px">
+	              </a>
+	            </div>
+	      
+	          <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse navbar-ex1-collapse">
+	              <ul class="nav navbar-nav">
+	                <li><a href="#"><i class="glyphicon glyphicon-user"></i>Quản Lý Khách Hàng</a></li>
+	                <li><a href="staff.html"><i class="glyphicon glyphicon-user"></i> Quản Lý Nhân Viên</a></li>
+	                <li><a href="#" data-toggle="modal" data-target="#modal-add-cus"><i class="glyphicon glyphicon-plus"></i>Thêm Khách Hàng</a></li>
+	                <li><a href="" class="cd-top" ><i class="glyphicon glyphicon-eject"></i></a></li>
+	              </ul>            
+	              <ul class="nav navbar-nav navbar-right">                
+	                <li class="dropdown">
+	                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
+	                  	<ul class="dropdown-menu">
+	                  		<li><a href="detail.html"><i class="glyphicon glyphicon-user"></i>Thông Tin Tài Khoản</a></li>
+	                    
+	                    	<hr>
+	                    	<li><a href=""><i class="glyphicon glyphicon-log-out"></i>Đăng Xuất</a></li>
+	                  	</ul>
+	                </li>
+	              </ul>
+	            </div><!-- /.navbar-collapse -->
+	          
+	        </div>
+      	</nav>
+    </div>
+	<!-- END HEADER -->
+	<div id="content">
+		<!--SEARCHING -->
+		<div id="searching" class="row">
+			<div class="col-md-2">			
+			</div>
+			<div class="col-md-8">				
+					<table id="searchTable">
+				        <thead>				           
+				        </thead>
+				        <tbody>
+				            <tr id="filter_global">				            	
+				                <td><a class="toggler btn btn-default" data-prod-cat="1">Click Để Tìm Kiếm Chi Tiết</a></td>
+				                <td><input type="search" class="global_filter form-control" id="global_filter" placeholder="Tất cả"></td>
+				            </tr>
+				            <tr id="filter_col1" data-column="2" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col2_filter" placeholder="Tên Khách Hàng"></td>
+				            </tr>
+				            <tr id="filter_col2" data-column="3" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col3_filter" placeholder="Số Điện Thoại"></td>
+				            </tr>
+				            <tr id="filter_col3" data-column="4" class="cat1">
+				                <td></td>
+				                <td>
+		                           	<select class="column_filter form-control" id="col4_filter">
+		                                <option value="" selected>Loại Giao Dịch</option>
+		                                <option>Vay</option>
+		                                <option>Thẻ Tín Dụng</option>
+		                            </select>
+		                        </td>
+				            </tr>
+				            <tr id="filter_col4" data-column="5" class="cat1">
+				                <td>Bắt Đầu</td>
+				                <td>
+				                	<div id="external_filter_container_bd"></div>
+				                </td>
+				            </tr>
+				            <tr id="filter_col5" data-column="6" class="cat1">
+				                <td>Kết Thúc</td>
+				                <td>				                	
+									<div id="external_filter_container_kt"></div>
+				                </td>
+				            </tr>
+				            <tr id="filter_col6" data-column="7" class="cat1">
+				                <td>Thay Đổi Cuối</td>
+				                <td>
+				                	<div id="external_filter_container_tdc"></div>
+				                </td>
+				            </tr>
+
+				            <tr id="filter_col7" data-column="8" class="cat1">
+				                <td></td>
+				                <td>
+				                	
+		                            <select class="column_filter form-control" id="col8_filter">
+		                            	<option value="" selected>Trạng Thái</option>		                            
+		                            	<option>Chưa GD</option>
+					                    <option>Hoàn Tất GD</option>
+					                    <option>KH Từ Chối</option>
+					                    <option>KH Hoãn GD</option>
+					                    <option>KH Đồng Ý</option>
+					                    <option>Đã Lấy Hồ Sơ</option>
+					                    <option>Đã Nộp Hồ Sơ</option>
+										<option>HT Hoãn GD</option>
+										<option>HT Từ Chối GD</option>
+										<option>HT Chấp Nhận GD</option>
+		                           	</select>
+		                      	</td>
+				            </tr>
+				            <tr id="filter_col8" data-column="9" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col9_filter" placeholder="Nguồn Khách Hàng"></td>
+				            </tr>
+				        </tbody>
+		    		</table>				
+			</div>
+			<div class="col-md-2">
+				
+			</div>
+		</div>
+		
+		<!-- END SEARCHING -->
+		<!-- ADD NEW CUSTOMER -->
+		<div>
+			<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-cus">Thêm Khách Hàng</button> -->
+			<!--ADD CUSTOMER MODAL FORM-->
+			<div class="modal fade" id="modal-add-cus" role="dialog">
+			    <div class="modal-dialog">
+			        <form class="add-form">
+			          	<!-- Modal content-->
+			          	<div class="modal-content">
+			            	<div class="modal-header">
+			              		<button type="button" class="close" data-dismiss="modal">&times;</button>
+			              		<h4 class="modal-title">Thêm Khách Hàng</h4>
+			          		</div>
+			          	<div class="modal-body">
+				            <div class="row">
+				                <div class="col-md-4">
+				                    <div class="form-group">
+				                        <label for="">CMND</label>
+				                        <input type="text" class="form-control" placeholder="CMND">
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="">Tên Khách Hàng</label>
+				                        <input type="text" class="form-control" placeholder="Họ Tên" required="">
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="">Số điện thoại</label>				                        
+				                       	<input class="form-control" type="tel" pattern="^\d{10,11}$" placeholder="Số Điện Thoại" required>
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="">Địa Chỉ</label>
+				                        <input type="text" class="form-control" placeholder="Địa Chỉ">
+				                    </div>
+				                    <div class="form-group">
+				                        <label for="">Email</label>
+				                        <input type="Email" class="form-control" placeholder="Email">
+				                    </div>
+				                </div>
+				                <div class="col-md-4">
+				                	<div class="form-group">
+					                    <label for="">Công Ty</label>
+					                    <input type="text" class="form-control" placeholder="Tên Công Ty">
+					                </div>
+					                <div class="form-group">
+					                    <label for="">Vị Trí</label>
+					                    <input type="text" class="form-control" placeholder="Vị Trí">
+					                </div>
+					                <div class="form-group">
+				                    	<label for="">Lương</label>
+				                    	<input type="text" class="form-control" placeholder="Lương">
+				                	</div>
+				                 	
+				            	</div>
+					            <div class="col-md-4">
+					                <div class="form-group">
+				                    	<label for="">Tiền Giao Dịch</label>
+				                    	<input type="text" class="form-control" placeholder="Tiền Giao Dịch">
+				                	</div>
+				                	
+					                <div class="form-group">
+					                    <label for="">Loại Giao Dịch</label>
+					                    <select class="form-control">
+					                        <option>Vay</option>
+					                        <option>Thẻ Tín Dụng</option>
+					                    </select>
+					                </div>
+					                <div class="form-group">
+					                    <label for="">Trạng Thái Giao Dịch</label>
+					                    <select class="form-control" id="state" onchange="changeState('state')">
+					                        <option>Chưa GD</option>
+					                        <option>Hoàn Tất GD</option>
+					                        <option>KH Từ Chối</option>
+					                        <option>KH Hoãn GD</option>
+					                        <option>KH Đồng Ý</option>
+					                        <option>Đã Lấy Hồ Sơ</option>
+					                        <option>Đã Nộp Hồ Sơ</option>
+											<option>HT Hoãn GD</option>
+											<option>HT Từ Chối GD</option>
+											<option>HT Chấp Nhận GD</option>
+					                    </select>
+					                </div>
+					               <!--  <div class="form-group">
+					                   <label for="">Lý do</label>
+					                   <textarea id="history" class="form-control" rows=""></textarea>
+					               </div>
+					               <div class="form-group">
+					                   <label for="">Lịch Sử Giao Dịch</label>
+					                   <textarea class="form-control" rows=""></textarea>
+					               </div> -->
+					            </div>
+				        	</div>
+				    	</div>
+					    <div class="modal-footer">
+					        <button type="submit" class="btn btn-info">Thêm Khách Hàng</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+					    </div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--END ADD CUSTOMER MODAL FORM-->
+		</div>
+		<!-- END ADD NEW CUSTOMER -->
+
+		<div id="processing" class="container-fluid">
+			<div class="panel panel-default">
+  				<div class="panel-body">
+				  	Số Hồ Sơ 
+				    <span>
+				    	<a href="" style="color: red">100</a>
+				    </span>
+				    <hr>
+				     Chưa GD 
+				    <span class="not-yet">
+				    	<a href="">50</a>
+				    </span>
+				     | Hoàn Tất GD 
+				    <span class="finish">
+				    	<a href="">50</a>
+				    </span>
+				     | KH Từ Chối 
+				    <span class="cus-refuse">
+				    	<a href="">50</a>
+				    </span>
+				     | KH Hoãn GD 
+				    <span class="cus-delay">
+				    	<a href="">50</a>
+				    </span>
+				     | KH Đồng Ý 
+				    <span class="cus-agree">
+				    	<a href="">50</a>
+				    </span>
+				     | Đã Lấy Hồ Sơ 
+				    <span class="f2">
+				    	<a href="">50</a>
+				    </span>
+				     | Đã Nộp Hồ Sơ 
+				    <span class="f1">
+				    	<a href="">50</a>
+				    </span>
+				     | HT Hoãn GD 
+				    <span class="sys-delay">
+				    	<a href="">50</a>
+				    </span>
+				     | HT Từ Chối GD 
+				    <span class="sys-refuse">
+				    	<a href="">50</a>
+				    </span>
+				     | HT Chấp Nhận GD 
+				    <span class="sys-confirm">
+				    	<a href="">50</a>
+				    </span>
+			  	</div>
+			</div>
+		</div>
+
+		<!-- SHOW HIDE COLUMN -->
+		<div id="showHideCol" class="container-fluid">
+			<button id="showHideBtn1" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="0" aria-pressed="false" autocomplete="off">
+			STT</button>
+			<button id="showHideBtn2" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="1" aria-pressed="false" autocomplete="off">
+			Chọn</button>
+			<button id="showHideBtn3" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="2" aria-pressed="false" autocomplete="off">
+			Tên Khách Hàng</button>
+			<button id="showHideBtn4" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="3" aria-pressed="false" autocomplete="off">
+			Số Điện Thoại</button>		
+			<button id="showHideBtn5" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="4" aria-pressed="false" autocomplete="off">
+			Loại Giao Dịch</button>
+			<button id="showHideBtn6" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="5" aria-pressed="false" autocomplete="off">
+			Bắt Đầu</button>
+			<button id="showHideBtn7" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="6" aria-pressed="false" autocomplete="off">
+			Kết Thúc</button>
+			<button id="showHideBtn8" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="7" aria-pressed="false" autocomplete="off">
+			Thay Đổi Cuối</button>
+			<button id="showHideBtn9" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="8" aria-pressed="false" autocomplete="off">
+			Trạng Thái</button>
+			<button id="showHideBtn10" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="9" aria-pressed="false" autocomplete="off">
+			Nguồn Khách Hàng</button>
+			<button id="showHideBtn11" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="10" aria-pressed="false" autocomplete="off">
+			Ghi Chú</button>
+			<button id="showHideBtn12" type="button" class="toggle-vis btn btn-default" data-toggle="button" data-column="11" aria-pressed="false" autocomplete="off">
+			Thao Tác</button>	
+		</div>
+		<!-- END SHOW HIDE COLUMN -->
+		<div id="multiAction" class="container-fluid" style="display: block;">
+			<div id="texx"></div>
+			<button type="submit" class="btn btn-default">Thao tác với</button>
+			<label>0 dòng</label>
+		</div>
+		<!-- TABLE -->
+		<div class="container-fluid">
+
+			<table id="myTable" class="display" cellspacing="0" width="100%">
+
+		        <thead>
+		            <tr>
+		                <th data-priority="1">STT</th>
+		                <th>
+		            		<input type="checkbox" onchange="checkAll(this);" name="chk[]" />
+		        		</th>
+		                <th data-priority="2">Tên Khách Hàng</th>
+		                <th data-priority="3">Số Điện Thoại</th>		                
+		                <th>Loại Giao Dịch</th>
+		                <th>Bắt Đầu</th>
+		                <th>Kết Thúc</th>
+		                <th>Thay Đổi Cuối</th>
+		                <th data-priority="4">Trạng Thái</th>
+		                <th>Nguồn Khách Hàng</th>
+		                <th>Ghi Chú</th>
+		                <th>Thao tác</th>
+		            </tr>
+		        </thead>
+		        <!-- <tfoot>
+		        	<th>STT</th>
+		        					<th>
+		            	<input type="checkbox" onchange="checkAll(this)" name="chk[]" />
+		        	</th>
+		            <th>Tên Khách Hàng</th>
+		            <th>Số Điện Thoại</th>		                
+		            <th>Loại Giao Dịch</th>
+		            <th>Bắt Đầu</th>
+		            <th>Kết Thúc</th>
+		            <th>Thay Đổi Cuối</th>
+		            <th>Trạng Thái</th>
+		            <th>Nguồn Khách Hàng</th>
+		            <th>Thao tác</th>
+		        </tfoot> -->
+		        
+		        <tbody>
+		            <tr>
+		                <td>1</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>		                  	
+		                  	<p class="label">Hoàn Tất GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>hihi</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+					<div class="modal fade" id="modal-update" role="dialog">
+					   	<div class="modal-dialog">
+					      	<form class="add-form">
+					         <!-- Modal content-->
+						        <div class="modal-content">
+						            <div class="modal-header">
+						               	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						               	<h4 class="modal-title">Cập Nhật Khách Hàng</h4>
+						            </div>
+						            <div class="modal-body">
+						               	<div class="row">
+						                  	<div class="col-md-4">
+						                     	<div class="form-group">
+							                        <label for="">CMND</label>
+							                        <input type="text" class="form-control" placeholder="CMND" value="025412232">
+						                     	</div>
+							                    <div class="form-group">
+							                        <label for="">Tên Khách Hàng</label>
+							                        <input type="text" class="form-control" placeholder="Họ Tên" value="Võ Duy Anh Hùng">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Số điện thoại</label>
+							                        <input class="form-control" type="tel" pattern="^\d{10,11}$" placeholder="Số Điện Thoại" value="01275436888">									            
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Địa Chỉ</label>
+							                        <input type="text" class="form-control" placeholder="Địa Chỉ" value="01 Phú Mỹ Hưng">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Email</label>
+							                        <input type="Email" class="form-control" placeholder="Email" value="hungvda96@gmail.com">
+							                    </div>
+						                  	</div>
+						                  	<div class="col-md-4">
+						                     	<div class="form-group">
+						                        	<label for="">Công Ty</label>
+						                        	<input type="text" class="form-control" placeholder="Tên Công Ty" value="Viking Bank">
+						                     	</div>
+						                    <div class="form-group">
+						                        <label for="">Vị Trí</label>
+						                        <input type="text" class="form-control" placeholder="Vị Trí" value="CIO">
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="">Lương</label>
+						                        <input type="text" class="form-control" placeholder="Lương" value="40M">
+						                    </div>
+						                  	</div>
+						                  	<div class="col-md-4">
+						                     	<div class="form-group">
+							                        <label for="">Tiền Giao Dịch</label>
+							                        <input type="text" class="form-control" placeholder="Tiền Giao Dịch" value="5000000">
+						                     	</div>
+						                    <div class="form-group">
+						                        <label for="">Loại Giao Dịch</label>
+						                        <select class="form-control">
+						                           <option>Vay</option>
+						                           <option selected="true">Thẻ Tín Dụng</option>
+						                        </select>
+						                    </div>
+						                    <div class="form-group">
+						                        <label for="">Trạng Thái Giao Dịch</label>
+						                        <select class="form-control" id="state" onchange="changeState('state')">
+						                           	<option>Chưa GD</option>
+							                        <option selected="true">Hoàn Tất GD</option>
+							                        <option>KH Từ Chối</option>
+							                        <option>KH Hoãn GD</option>
+							                        <option>KH Đồng Ý</option>
+							                        <option>Đã Lấy Hồ Sơ</option>
+							                        <option>Đã Nộp Hồ Sơ</option>
+													<option>HT Hoãn GD</option>
+													<option>HT Từ Chối GD</option>
+													<option>HT Chấp Nhận GD</option>
+						                        </select>
+						                    </div>
+						                  </div>
+						               	</div>
+						            </div>
+						            <div class="modal-footer">
+						               <button type="submit" class="btn btn-info">Cập Nhật</button>
+						               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+						            </div>
+						        </div>
+					      	</form>
+					   	</div>
+					</div>
+
+					<div class="modal fade" id="modal-update-note" role="dialog">
+                		<div class="modal-dialog">
+		                    <form class="add-form">
+		                      	<!-- Modal content-->
+		                      	<div class="modal-content">
+		                        	<div class="modal-header">
+		                          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		                          		<h4 class="modal-title">Cập Nhật Ghi Chú</h4>
+		                      		</div>
+		                      		<div class="modal-body">
+
+		                        		<div class="row">
+		                            		<div class="col-md-12">
+		                                		<div class="form-group">
+		                                    		<label for="">Lý do thao tác</label>
+		                                    		<textarea class="form-control" rows="4"></textarea>
+		                                		</div>
+		                                		<div class="form-group">
+		                                    		<label for="">Cập nhật ghi chú</label>
+		                                    		<textarea class="form-control" rows="4"></textarea>
+		                                		</div>
+		                            		</div>   
+		                        		</div>
+		                    		</div>
+		                    		<div class="modal-footer">
+		                        		<button type="submit" class="btn btn-info">Cập Nhật</button>
+		                        		<button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+		                    		</div>
+		                		</div>
+		            		</form>
+		        		</div>
+    				</div>
+
+					<tr>
+		                <td>2</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Thảo</td>
+		                <td>01674948780</td>
+		                <td>Vay</td>
+		                <td>25/01/2017</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">Chưa GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>3</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>25/10/2017</td>
+		                <td>26/05/2017</td>
+		               	<td>20/04/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">Đã Lấy Hồ Sơ</p>
+		                </td>
+		                <td>Anh Tèo</td>
+		                <td>hehe</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>4</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/08/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">KH Hoãn GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>5</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/11/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">Hoàn Tất GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>haha</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>6</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Vay</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">KH Từ Chối</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>7</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">KH Đồng Ý</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>8</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">Đã Lấy Hồ Sơ</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>9</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">Đã Nộp Hồ Sơ</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>10</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">HT Hoãn GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>10</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">HT Từ Chối GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+		            <tr>
+		                <td>11</td>
+		                <td><input type="checkbox" name="chkbox[]"></td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>Thẻ Tín Dụng</td>
+		                <td>10/01/2012</td>
+		                <td>26/06/2017</td>
+		               	<td>20/02/2017</td>
+		               	<td>
+		                  	
+		                  	<p class="label">HT Chấp Nhận GD</p>
+		                </td>
+		                <td>Anh Thông</td>
+		                <td>huhu</td>
+		                <td>
+							<div class="dropdown">
+	                        	<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Thao Tác<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                            	<li><a href="#" data-toggle="modal" data-target="#modal-update-note">Cập Nhật Ghi Chú</a></li>
+	                                            
+	                            </ul>
+							</div>
+	                    </td>	                	
+		            </tr>
+
+		        </tbody>
+		    </table>
+		</div>
+		<!-- END TABLE -->
+		
+
+
+
+
+	</div>
+	<!-- END CONTENT -->
+
+	<div id="footer" class="footer-section">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" target=""  > Designed by: HeroGroup</a> 
+            </div>
+		</div>
+	</div>
+</body>
+</html>

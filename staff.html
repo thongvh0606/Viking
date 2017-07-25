@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quản Lý Nhân Viên</title>
+	<link rel="shortcut icon" href="images/Admin-User.ico" />
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
+
+	<!-- https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css -->
+	<!-- DATATABLES  -->
+	<!-- https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js -->
+
+	<script language="javascript" src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+	<script language="javascript" src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js"></script>
+	<script language="javascript" src="js/staff_custom.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.yadcf.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="loader"></div>
+	<!-- HEADER -->
+	<div id="header">
+      <!-- bs3-navbar:responsive -->
+    	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+	        <div class="container-fluid">
+	          <!-- Brand and toggle get grouped for better mobile display -->
+	          
+	            
+	            <div class="navbar-header ">
+	              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	              </button>
+	              <a class="navbar-brand" href="home.html">
+	              <img src="images/logo.png" width="130px">
+	              </a>
+	            </div>
+	      
+	          <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse navbar-ex1-collapse">
+	              <ul class="nav navbar-nav">
+	                <li><a href="#"><i class="glyphicon glyphicon-user"></i>Quản Lý Khách Hàng</a></li>
+	                <li><a href="#"><i class="glyphicon glyphicon-user"></i> Quản Lý Nhân Viên</a></li>
+	                <li><a href="register.html"><i class="glyphicon glyphicon-plus"></i>Thêm Nhân Viên</a></li>
+	                <!-- <li><a href="#" data-toggle="modal" data-target="#modal-add-staff"><i class="glyphicon glyphicon-plus"></i>Thêm Nhân Viên</a></li> -->
+	                <li><a href="" class="cd-top" ><i class="glyphicon glyphicon-eject"></i></a></li>
+	              </ul>            
+	              <ul class="nav navbar-nav navbar-right">                
+	                <li class="dropdown">
+	                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
+	                  	<ul class="dropdown-menu">
+	                  		<li><a href="detail.html"><i class="glyphicon glyphicon-user"></i>Thông Tin Tài Khoản</a></li>
+	                    	<hr>
+	                    	<li><a href=""><i class="glyphicon glyphicon-log-out"></i>Đăng Xuất</a></li>
+	                  	</ul>
+	                </li>
+	              </ul>
+	            </div><!-- /.navbar-collapse -->	          
+	        </div>
+      	</nav>
+      	<!-- ADD NEW STAFF -->		
+		<!-- END ADD NEW CUSTOMER -->
+    </div>
+	<!-- END HEADER -->
+	<!-- CONTENT -->
+    <div class="content">
+    	<div id="searching" class="row">
+			<div class="col-md-2">			
+			</div>
+			<div class="col-md-8">				
+					<table id="searchTable">
+				        <thead>				           
+				        </thead>
+				        <tbody>
+				            <tr id="filter_global">				            	
+				                <td><a class="toggler btn btn-default" data-prod-cat="1">Click Để Tìm Kiếm Chi Tiết</a></td>
+				                <td><input type="search" class="global_filter form-control" id="global_filter" placeholder="Tất cả"></td>
+				            </tr>
+				            <tr id="filter_col1" data-column="1" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col1_filter" placeholder="ID"></td>
+				            </tr>
+				            <tr id="filter_col1" data-column="2" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col2_filter" placeholder="Tên Khách Hàng"></td>
+				            </tr>
+				            <tr id="filter_col2" data-column="3" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col3_filter" placeholder="Số Điện Thoại"></td>
+				            </tr>
+				            <tr id="filter_col3" data-column="4" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col4_filter" placeholder="Team"></td>
+				            </tr>
+				            <tr id="filter_col4" data-column="5" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col5_filter" placeholder="Vai Trò"></td>
+				            </tr>
+				            <!-- <tr id="filter_col3" data-column="4" class="cat1">
+				                <td></td>
+				                <td>
+				            		                           	<select class="column_filter form-control" id="col4_filter">
+				            		                                <option value="" selected>Loại Giao Dịch</option>
+				            		                                <option>Vay</option>
+				            		                                <option>Thẻ Tín Dụng</option>
+				            		                            </select>
+				            		                        </td>
+				            </tr>
+				            <tr id="filter_col4" data-column="5" class="cat1">
+				                <td>Bắt Đầu</td>
+				                <td>
+				                	<div id="external_filter_container_bd"></div>
+				                </td>
+				            </tr>
+				            <tr id="filter_col5" data-column="6" class="cat1">
+				                <td>Kết Thúc</td>
+				                <td>				                	
+				            									<div id="external_filter_container_kt"></div>
+				                </td>
+				            </tr>
+				            <tr id="filter_col6" data-column="7" class="cat1">
+				                <td>Thay Đổi Cuối</td>
+				                <td>
+				                	<div id="external_filter_container_tdc"></div>
+				                </td>
+				            </tr>
+				            
+				            <tr id="filter_col7" data-column="8" class="cat1">
+				                <td></td>
+				                <td>
+				            		                            <select class="column_filter form-control" id="col8_filter">
+				            		                                <option value="" selected>Trạng Thái</option>
+				            		                                <option>Chưa Giao Dịch</option>
+				            		                                <option>Khách Hàng Từ Chối GD</option>
+				            		                                <option>Khách Hàng Đồng Ý GD</option>
+				            		                                <option>F1</option>
+				            		                                <option>Hệ Thống Từ Chối</option>
+				            		                                <option>Xác Nhận</option>
+				            		                                <option>Kết Thúc</option>
+				            		                           	</select>
+				            		                      	</td>
+				            </tr>
+				            <tr id="filter_col8" data-column="9" class="cat1">
+				                <td></td>
+				                <td><input type="text" class="column_filter form-control" id="col9_filter" placeholder="Nguồn Khách Hàng"></td>
+				            </tr> -->
+				        </tbody>
+		    		</table>				
+			</div>
+			<div class="col-md-2">
+				
+			</div>
+		</div>
+		<!-- TABLE -->
+		<div class="container-fluid">
+	    	<table id="staffTable" class="display" cellspacing="0" width="100%">
+	    		<thead>
+	    			<tr>
+			            <th data-priority="1">STT</th>
+			            <th>ID</th>
+			            <th data-priority="2">Tên Nhân Viên</th>
+			            <th data-priority="3">Số Điện Thoại</th>
+			            <th>Team</th>
+			            <th>Vai Trò</th>
+			            <th>Tiến Độ</th>		            
+			            <th>Thao tác</th>
+	    			</tr>
+	    		</thead>
+	    		<tbody>
+	    			<tr>
+	    				<td>1</td>
+	    				<td>NV001</td>
+		                <td>Võ Duy Anh Hùng</td>
+		                <td>01275436888</td>
+		                <td>SML</td>
+		                <td>Dự bị</td>
+		                <td>
+							<div class="panel panel-default">
+							   <div class="panel-heading">
+							      Tiến Độ Làm Việc
+							   </div>
+							   <div class="panel-body">
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+							            <span class="sr-only">40% Complete (success)</span>
+							            40% 
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							            <span class="sr-only">20% Complete</span>
+							            20%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							            <span class="sr-only">60% Complete (warning)</span>
+							            60%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+							            <span class="sr-only">80% Complete</span>
+							            80%
+							         </div>
+							      </div>
+							   </div>
+							</div>		                
+		                </td>
+		                <td>
+		                	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                    </td>
+	    			</tr>
+	    			<div class="modal fade" id="modal-update" role="dialog">
+					   	<div class="modal-dialog">
+					      	<form class="add-form">
+					         <!-- Modal content-->
+						        <div class="modal-content">
+						            <div class="modal-header">
+						               	<button type="button" class="close" data-dismiss="modal">&times;</button>
+						               	<h4 class="modal-title">Cập Nhật Nhân Viên</h4>
+						            </div>
+						            <div class="modal-body">
+							            <div class="row">
+							                <div class="col-md-4">
+							                    <div class="form-group">
+							                        <label for="">Mã Nhân Viên</label>
+							                        <input type="text" class="form-control" placeholder="Mã NV" required="" value="NV0001">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Tên Nhân Viên</label>
+							                        <input type="text" class="form-control" placeholder="Họ Tên" required="" value="Võ Duy Anh Hùng">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">CMND</label>
+							                        <input type="text" class="form-control" placeholder="CMND" value="012335232">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Giới Tính</label>
+							                        <input type="text" class="form-control" placeholder="Giới Tính" value="Nam">
+							                    </div>
+							                	<div class="form-group">
+							                        <label for="">Số điện thoại</label>				                        
+							                       	<input class="form-control" type="tel" pattern="^\d{10,11}$" placeholder="Số Điện Thoại" required value="01275436888">
+							                    </div>
+							                </div>
+							                <div class="col-md-4">
+							                    <div class="form-group">
+							                        <label for="">Email</label>
+							                        <input type="Email" class="form-control" placeholder="Email" value="hungvda96@gmail.com">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Facebook</label>
+							                        <input type="text" class="form-control" placeholder="Facebook" value="https://www.facebook.com/anhhung.idol">
+							                    </div>							                    
+							                    <div class="form-group">
+							                        <label for="">Địa Chỉ</label>
+							                        <input type="text" class="form-control" placeholder="Địa Chỉ" value="123/456 Lê Lợi, P.Bến Thành, Q1, TPHCM">
+							                    </div>
+							                    <div class="form-group">
+							                        <label for="">Quê Quán</label>
+							                        <input type="text" class="form-control" placeholder="Quê Quán" value="Đè Nẽn :))">
+							                    </div>
+							                	<div class="form-group">
+							                    	<label for="">Ghi Chú</label>
+							                    	<input type="text" class="form-control" placeholder="Ghi Chú" value="AHihi">
+							                	</div>					                
+							                 	
+							            	</div>
+								            <div class="col-md-4">
+							                    <div class="form-group">
+							                        <label for="">Team</label>
+							                        <input type="text" class="form-control" placeholder="Team" value="SML">
+							                    </div>
+							                	<div class="form-group">
+								                    <label for="">Ngày Vào Làm Việc</label>
+								                    <input type="text" class="form-control" placeholder="Ngày Vào Làm Việc" value="12/01/2015">
+								                </div>
+								                <div class="form-group">
+								                    <label for="">Vai Trò</label>
+								                    <input type="text" class="form-control" placeholder="Vai Trò" value="Lao Công">
+								                </div>
+								                <div class="form-group">
+							                    	<label for="">Lương</label>
+							                    	<input type="text" class="form-control" placeholder="Lương" value="7 Củ">
+							                	</div>
+								            </div>
+							        	</div>
+				    				</div>
+						            <div class="modal-footer">
+						               <button type="submit" class="btn btn-info">Cập Nhật</button>
+						               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+						            </div>
+						        </div>
+					      	</form>
+					   	</div>
+					</div>
+
+					<tr>
+	    				<td>2</td>
+	    				<td>NV0002</td>
+		                <td>Võ Duy Anh Khoa</td>
+		                <td>01275436888</td>
+		                <td>SKT T1</td>
+		                <td>Feeder 15p/ff</td>
+		                <td>
+							<div class="panel panel-default">
+							   <div class="panel-heading">
+							      Tiến Độ Làm Việc
+							   </div>
+							   <div class="panel-body">
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+							            <span class="sr-only">75% Complete (success)</span>
+							            75% 
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							            <span class="sr-only">20% Complete</span>
+							            20%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							            <span class="sr-only">60% Complete (warning)</span>
+							            60%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+							            <span class="sr-only">30% Complete</span>
+							            30%
+							         </div>
+							      </div>
+							   </div>
+							</div>		                
+		                </td>
+		                <td>
+		                	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                    </td>
+	    			</tr>
+
+	    			<tr>
+	    				<td>3</td>
+	    				<td>NV0003</td>
+		                <td>Võ Duy Anh Dũng</td>
+		                <td>01233434298</td>
+		                <td>GAM</td>
+		                <td>Gánh Team Bạn</td>
+		                <td>
+							<div class="panel panel-default">
+							   <div class="panel-heading">
+							      Tiến Độ Làm Việc
+							   </div>
+							   <div class="panel-body">
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+							            <span class="sr-only">70% Complete (success)</span>
+							            70% 
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							            <span class="sr-only">20% Complete</span>
+							            20%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+							            <span class="sr-only">50% Complete (warning)</span>
+							            50%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%">
+							            <span class="sr-only">69% Complete</span>
+							            69%
+							         </div>
+							      </div>
+							   </div>
+							</div>		                
+		                </td>
+		                <td>
+		                	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                    </td>
+	    			</tr>
+
+	    			<tr>
+	    				<td>4</td>
+	    				<td>NV0004</td>
+		                <td>Võ Duy Anh Huy</td>
+		                <td>0122456772</td>
+		                <td>Fnatic</td>
+		                <td>Bán độ</td>
+		                <td>
+							<div class="panel panel-default">
+							   <div class="panel-heading">
+							      Tiến Độ Làm Việc
+							   </div>
+							   <div class="panel-body">
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+							            <span class="sr-only">70% Complete (success)</span>
+							            70% 
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%">
+							            <span class="sr-only">55% Complete</span>
+							            55%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+							            <span class="sr-only">30% Complete (warning)</span>
+							            30%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%">
+							            <span class="sr-only">69% Complete</span>
+							            69%
+							         </div>
+							      </div>
+							   </div>
+							</div>		                
+		                </td>
+		                <td>
+		                	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                    </td>
+	    			</tr>
+
+	    			<tr>
+	    				<td>5</td>
+	    				<td>NV0005</td>
+		                <td>Võ Duy Anh Dũng</td>
+		                <td>01233434298</td>
+		                <td>APPLE</td>
+		                <td>CEO</td>
+		                <td>
+							<div class="panel panel-default">
+							   <div class="panel-heading">
+							      Tiến Độ Làm Việc
+							   </div>
+							   <div class="panel-body">
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+							            <span class="sr-only">70% Complete (success)</span>
+							            70% 
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+							            <span class="sr-only">20% Complete</span>
+							            20%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+							            <span class="sr-only">50% Complete (warning)</span>
+							            50%
+							         </div>
+							      </div>
+							      <div class="progress progress-striped">
+							         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%">
+							            <span class="sr-only">69% Complete</span>
+							            69%
+							         </div>
+							      </div>
+							   </div>
+							</div>		                
+		                </td>
+		                <td>
+		                	<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal-update">Chi tiết và chỉnh sửa</a></li>
+	                    </td>
+	    			</tr>
+	    		</tbody>
+
+	    	</table>
+			
+		</div>
+		<!-- END TABLE -->
+    </div>
+    <!-- END CONTENT -->
+    <!-- FOOTER -->
+    <div id="footer" class="footer-section footer">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#" target=""  > Designed by: HeroGroup</a> 
+            </div>
+		</div>
+	</div>
+	<!-- END FOOTER -->
+</body>
+</html>

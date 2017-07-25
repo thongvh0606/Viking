@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<link rel="shortcut icon" href="images/Business-Professor.ico" />
+	<!-- Google Fonts -->
+	<link href='fonts/font-in-use.ttf' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css">
+
+<!-- example style for inner toggle -->
+<link rel="stylesheet" href="css/example.wink.css">
+<!-- custom modernizr build -->
+<script src="hide_password/vendor/modernizr.custom.js"></script>
+
+</head>
+
+<body id="login-wrap">
+
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class=""><span id="logo">VIKING</span></h1>
+		</div>
+		<div class="login-box">
+			<div class="box-header">
+				<h2>Log In</h2>
+			</div>
+			<div class="box-content">
+				<figure>
+				  <div class="login">
+				  <form action="" method="post">
+				    <label class="login-label" for="username-1">Username</label>
+				    <input class="login-field  login-field-username" id="username" type="text" placeholder="" required="">
+				    <label class="login-label" for="password-1">Password</label>
+				    <input class="login-field  login-field-password" id="password" type="password" placeholder="" autocomplete="off" required="">
+				    <div class="login-footer">
+			            <button type="submit" class="btn btn--right">Sign in</button>
+			            <a href="forgot-password.html">
+			              <p class="small"><span class="icon icon--min">ಠ╭╮ಠ</span> I've forgotten something</p>
+			            </a>
+					</div>
+				  </form>
+				  </div>
+				  
+				</figure>
+			</div>
+			
+		</div>
+			
+	</div>
+
+<!-- including the jQuery dependency -->
+<script src="hide_password/vendor/jquery.min.js"></script>
+<!-- including the plugin -->
+<script src="hide_password/hideShowPassword.min.js"></script>
+<script>
+// Example 1:
+// - Password hidden by default
+// - Inner toggle shown
+$('#password').hidePassword(true);
+</script>
+</body>
+
+
+
+</html>
