@@ -1,2 +1,4 @@
 # Viking
-Management customer transactions information (Front-end with static data)
+Allowing an authorize user to manage customer transaction informations (WebUI with static data)
++ Staff: Allowing to view/add/edit customer information and search direct on web page. Edit staff information
++ Admin: Allowing to manage staff information, staff process working
